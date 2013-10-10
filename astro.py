@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-
-date = input('entre ta date de naissance (jj/mm)\n')
+date = input('entre ta date de naissance (jj/mm) \n')
 while 1:
     try:
-        date = date.split("/")
-        #Si la conversion à échouée date est toujours une string
+        date = date.split('/')
         if isinstance(date, str):
             raise
         jj = int(date[0])
@@ -12,5 +9,6 @@ while 1:
         break
     except:
         print('try again')
-        date = input('entre ta date de naissance\n')
-print('jour :', jj, ' \n mois :', mm)
+        date = input('entre ta date de naissance (jj/mm) \n')
+
+print('jour :', jj, '\nmois :', mm)

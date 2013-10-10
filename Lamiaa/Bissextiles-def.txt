@@ -1,0 +1,9 @@
+Sont bissextiles les années :
+
+    soit divisibles par 4 mais non divisibles par 100 ;
+    soit divisibles par 400.
+
+Donc, inversement, ne sont pas bissextiles les années :
+
+    soit non divisibles par 4 ;
+    soit divisibles par 100, mais pas par 400.
