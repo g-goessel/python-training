@@ -1,4 +1,4 @@
-# boucle while + if
+# boucle while + if + break
 test=1
 while 1:
     print('test vaut', test)
