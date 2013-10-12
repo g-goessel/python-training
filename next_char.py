@@ -5,7 +5,7 @@ sortie=''
 
 lettres='abcdefghijklmnopqrstuvwxyz'
 e='éè'
-entree=input('phrase ? \n').lower()
+entree=input('phrase ? \n')
 for i in entree:
     search=lettres.find(i)
     if search!=-1:
