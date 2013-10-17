@@ -15,3 +15,7 @@ elif condition2:
     action2
 else:
     action3
+
+#boucle for
+for variable_muette in /ensemble/:
+    choses a faire
