@@ -6,7 +6,7 @@
 # jeu du yams
 from yams_func import *
 
-#nombres aléatoires des 6 dés
+#liste contenant les nombres aléatoires des 5 dés
 alea = []
 
 for i in range(5):
