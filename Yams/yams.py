@@ -14,19 +14,40 @@ for i in range(5):
 print(alea)
 
 
-#premiere demande de relance
-nbr_relances = demande('int', 'combien de dés veux tu relancer ?')
-relance(nbr_relances, alea)
+#premiere  relance
+#on appel alea_rel1 la liste contenant la valeur des dés après la première relance
 
+alea_rel1=relance(alea)
 
-#deuxieme demande de relance si on n'a pas refusé la remière
-if nbr_relances != 0:
-    print('\nPremière relance effectuée !')
-    print('Vos dés sont maintenant :')
-    print(alea,'\n')
-
-    nbr_relances = demande('int', 'combien de dés veux tu relancer ?')
-    relance(nbr_relances, alea)
+#deuxieme  relance si la première n'a pas été refusée
+if alea != alea_rel1:
+    alea=relance(alea_rel1)
+else:
+    alea=alea_rel1
     print('Relances terminées !')
     print('\nVos dés sont maintenant :')
     print(alea)
+
+
+#calcul des points
+print('Nous allons maintenant calculer vos points')
+while 1:
+    methode_compt=demande(' ','Voulez vous prendre un numéro ou une figure ? (n/f)')
+    #dans le cas ou le joueur veut compter suivant les numéros
+    if methode_compt=='n':
+        while 1:
+            nbr=demande(0,'Quel numéro voulez vous choisir ?')
+            if nbr>=1 and nbr <=6:
+                points=alea.count(nbr)
+                break
+            else:
+                print('Les valeurs possibles d\'un dés sont comprises entre 1 et 6')
+            break
+    #dans le cas ou le joueur veut compter suivant une figure
+    elif methode_compt=='f':
+        while 1:
+            fig=demande(0,'Quelle figure voulez vous prendre ?')
+        break
+    else :
+        print('Erreur de donnée, recommencez')
+print('Vous avez', points,'points')
