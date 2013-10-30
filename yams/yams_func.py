@@ -9,7 +9,7 @@ import random
 def demande(var_type_ref, phrase):
     """
         Cette fonction permet de demande à l'utilisateur de rentrer une
-        variable du type var_type_ref avec comme question phrase.
+        variable du type de "var_type_ref" avec comme question "phrase".
     """
     while 1:
         input_var = input(phrase)
@@ -31,10 +31,10 @@ def demande(var_type_ref, phrase):
 
 
 
-def relance(inter):
+def jette_des(inter):
     """
-        Cette fonction demande le nombre de relances (nbr_relances)
-        Le paramètre inter permet de savoir la combinaison initiale
+        Cette fonction demande le nombre de relances ("nbr_relances")
+        Le paramètre "inter" permet de savoir la combinaison initiale de dés
         On retourne la nouvelle combinaison de dés
     """
     deja_rejoues = []

@@ -17,11 +17,11 @@ print(alea)
 #premiere  relance
 #on appel alea_rel1 la liste contenant la valeur des dés après la première relance
 
-alea_rel1=relance(alea)
+alea_rel1=jette_des(alea)
 
 #deuxieme  relance si la première n'a pas été refusée
 if alea != alea_rel1:
-    alea=relance(alea_rel1)
+    alea=jette_des(alea_rel1)
 else:
     alea=alea_rel1
     print('Relances terminées !')
