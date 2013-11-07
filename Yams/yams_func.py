@@ -15,7 +15,10 @@ def demande(var_type_ref, phrase):
         input_var = input(phrase)
         #vérifie si l'entrée est correcte
         try:
-            if type(var_type_ref) == int:
+            if input_var == '':
+                #si l'entrée est vide on suppose que l'utilisateur rentre 0
+                return 0
+            elif type(var_type_ref) == int:
                 return int(input_var)
             elif type(var_type_ref) == str:
                 return str(input_var)
@@ -42,7 +45,7 @@ def jette_des(inter):
 
     while relance_2>0:
         while 1:
-            nbr_relances = demande(0, 'Combien de dés voulez vous relancer ?')
+            nbr_relances = demande(0, 'Combien de dés voulez vous relancer ? [0] ')
             if nbr_relances>0 and nbr_relances<=5:
                 relance_2-=1
                 break
@@ -57,7 +60,7 @@ def jette_des(inter):
         deja_rejoues = []
         for i in range(nbr_relances):
             while 1:
-                k = demande(0, 'Quel dé voulez vous relancer ?\n')
+                k = demande(0, 'Quel dé voulez vous relancer ? ')
                 if k in deja_rejoues:
                     print('Vous ne pouvez pas relancer ce dé plusieurs fois !')
                 elif type(k) is int and k<=5 and k>0:
@@ -73,7 +76,7 @@ def jette_des(inter):
 
 def score(des):
     """
-        Cette fonction score retourne une liste des scores possibles
+        Cette fonction score retourne la liste des scores possibles
         pour chaque combinaison
         Chaque combinaison possèdera son score inscrit dans une variable
         portant son nom (sauf pour les chiffres où on a une liste)
