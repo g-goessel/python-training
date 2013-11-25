@@ -13,20 +13,45 @@ def genere_liste(n):
         liste.append(randint(1,10*n))
     return liste
 
-def moyenne(a):
-    somme=0
-    for i in a:
-        somme+=i
-    return somme/len(a)
-    
 def decoupe(liste_1):
-    length=len(liste_1)//2
-    liste_2=[]
-    for i in range(length):
-        liste_2.append(liste_1.pop(0))
-    return[liste_1, liste_2]
-    
-def tri(liste_a_trier):
-    if lenliste_a_trier
-            
-print(decoupe(genere_liste(50)))
+    n=0
+    resultat=[]
+    for i in liste_1:
+        try:
+            #on essaie de decouper la liste_1 en ensembles de deux elements
+            resultat.append([liste_1[n],liste_1[n+1]])
+            n+=2
+        except:
+            #Si cela echoue c'est qu'il ne reste plus qu'un élément
+            if len(liste_1)%2:
+                resultat.append(([liste_1[n]]))
+            break
+    return resultat
+
+def tri(liste_1, liste_2):
+    sortie=[]
+    while len(liste_1)>0 or len(liste_2)>0:
+        try:
+            if liste_1[0]<liste_2[0]:
+                sortie.append(liste_1.pop(0))
+            else :
+                sortie.append(liste_2.pop(0))
+        except:
+            if len(liste_1)==0:
+                sortie+=liste_2
+            elif len(liste_2)==0:
+                sortie+=liste_1
+            break
+    return sortie
+
+
+intermediaire=[]
+
+liste_gen=genere_liste(42)
+try:
+    for i in range(len(liste_gen)//2 +1):
+        intermediaire=tri(liste_gen[i],liste_gen[i+1])
+except:
+    pass
+print(intermediaire)
+print(tri([0,1], [5,8]))

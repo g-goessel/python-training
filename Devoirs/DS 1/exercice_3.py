@@ -5,10 +5,12 @@ Created on Fri Nov  8 13:06:31 2013
 @author: eleve
 """
 
-from pylab import *
+from pylab import matplotlib, plot, show
 from random import randint
-import threading
+#from multiprocessing import *
 import time
+import timeit
+
 
 liste_x=[]
 liste_y=[]
@@ -24,15 +26,7 @@ def brown(p):
            y-=1
     return y
 
-def temp_multi():
-  a=brown(50)
-  if a in liste_x:
-    liste_y[liste_x.index(a)]+=1
-  else:
-    liste_x.append(a)
-    liste_y.append(1)
-
-def Thread_1():
+def Thread():
   for i in range(100000):
     a=brown(50)
     if a in liste_x:
@@ -41,18 +35,7 @@ def Thread_1():
       liste_x.append(a)
       liste_y.append(1)
 
-t1 = threading.Thread(target=Thread_1)
-t2 = threading.Thread(target=Thread_1)
-t3 = threading.Thread(target=Thread_1)
-t4 = threading.Thread(target=Thread_1)
-t1.start()
-t2.start()
-t3.start()
-t4.start()
-t1.join()
-t2.join()
-t3.join()
-t4.join()
+Thread()
 
 time_end=time.clock()
 print(time_end - time_origin)
