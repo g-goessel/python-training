@@ -15,7 +15,6 @@ import timeit
 liste_x=[]
 liste_y=[]
 time_origin=time.clock()
-nbr_repetitions=4
 
 def brown(p):
     y=0
