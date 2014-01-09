@@ -22,5 +22,5 @@ for i in linspace(0.1,5,10):
     plot(liste_t,liste_y_one)
     subplot(i+1,2,2)
     plot(liste_y_one,liste_y)
-    
+
 show()
