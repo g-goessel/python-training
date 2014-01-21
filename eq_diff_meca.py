@@ -10,8 +10,11 @@ def F(liste_f,t,alpha,g):
     y_pp = -alpha*sqrt(x_p**2+y_p**2) *y_p -g
     return [x_p,x_pp,y_p,y_pp]
 
-liste_t= linspace(0,5,100)
-for theta in linspace(0,pi/2,15):
+liste_t= linspace(0,10,1000)
+for theta in linspace(0,pi/2,10):
     results=odeint(F,[0,10*cos(theta),0,10*sin(theta)],liste_t,(0.5,9.8))
-    plot(results[:,0],results[:,2])
+    plot(results[:,0],results[:,2],label=theta)
+    legend()
+axhline(y=0,color="black",linewidth=2)
+ylim([-0.5,2.5])
 show()
