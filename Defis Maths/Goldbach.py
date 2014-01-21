@@ -7,18 +7,18 @@ import gmpy2
 #see here for gmpy2 : http://code.google.com/p/gmpy/
 
 #bibliotheques perso, a supprimer :
-from lib.pynma import pynma
+from lib.pyPushBullet.pushbullet import PushBullet
 from lib import personal_keys
 
 #API perso pour l'envoi de notifs à mon tel
-p = pynma.PyNMA(personal_keys.perso("NMA"))
+p = PushBullet(personal_keys.perso("API_PB"))
 
 # Désigne le nombre de calculs à effectuer en meme temps
 # Ne pas dépasser 10**6 pour 3Go de RAM libre
 etape = 10**4
 
 # Nombres d'étapes nécessaires avant de recevoir un message d'etat du calcul
-step_msg=10**4
+step_msg=10**1
 
 #Adresse du fichier où sont stockés les résultats
 out_dir='/mnt/sdc1/Goldbach.txt'
@@ -57,7 +57,7 @@ if __name__ == '__main__':
                 print(*result,sep='\n')
                 n+=etape
             b=time.process_time()
-            p.push("Golbach","Nouvelle étape atteinte !", str(nbr_boucle)+'*10^'+str(int(log(step_msg*etape)/log(10))+1))
+            p.pushNote(personal_keys.perso("PB_Nexus5"),"Golbach", str(nbr_boucle)+'*10^'+str(int(log(step_msg*etape)/log(10))+1))
             sys.stdout.close()
             # On restaure stdout pour retrouver une sortie terminal
             sys.stdout=stdout_old
