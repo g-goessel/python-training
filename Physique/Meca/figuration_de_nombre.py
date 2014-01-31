@@ -13,32 +13,43 @@ from PIL import Image,ImageTk
 x=0
 y=0
 theta=0
-a=5
-b=3
-r=(1+sqrt(5))/2
 x_list=list()
 y_list=list()
 xscale=900
 yscale=700
-
-for n in range(int(1*10**6)):
-    x_list.append(x)
-    y_list.append(y)
-    if math.floor(r*(a*n+b))%2 ==0 :
-        theta += pi/3
-    else :
-        theta += -2*pi/3
-    x+=cos(theta)
-    y+=sin(theta)
-
-plot(x_list,y_list,',')
-try :
-    os.mkdir('temp')
-except:
-    pass
+def render():
+    a=fen.a.get()
+    b=fen.b.get()
+    r=fen.r.get()
+    for n in range(int(1*10**6)):
+        x_list.append(x)
+        y_list.append(y)
+        if math.floor(r*(a*n+b))%2 ==0 :
+            theta += pi/3
+        else :
+            theta += -2*pi/3
+        x+=cos(theta)
+        y+=sin(theta)
+    
+    plot(x_list,y_list,',')
+    try :
+        os.mkdir('temp')
+    except:
+        pass
+    savefig('temp/sauvegarde.png')
+    close()  
+    tk.mainloop()
+    
 fen=tk.Tk()
-savefig('temp/sauvegarde.png')
-close()
+fen.a=tk.IntVar()
+fen.b=tk.IntVar()
+fen.r=tk.DoubleVar()
+fen.entry_a=tk.Entry(fen,textvariable=fen.a)
+fen.entry_a.grid(row=1,column=2)
+fen.entry_b=tk.Entry(fen,textvariable=fen.b)
+fen.entry_b.grid(row=2,column=2)
+fen.entry_r=tk.Entry(fen,textvariable=fen.r)
+fen.entry_r.grid(row=3,column=2)
 image =Image.open('temp/sauvegarde.png')
 largeur_image_i=image.size[0]
 hauteur_image_i=image.size[1]
