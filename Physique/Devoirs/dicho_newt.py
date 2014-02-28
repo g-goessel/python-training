@@ -1,4 +1,5 @@
 from scipy import misc
+from numpy import arctan
 
 def dichotomie(F,a,b,epsilon):
     ite=0
@@ -15,9 +16,8 @@ def dichotomie(F,a,b,epsilon):
             b=c
         else: 
             a=c
-        print(a,b,c,ite)
             
-    return (a,b,ite)
+    return ((a+b)/2,ite)
     
     
 def newton(F,a,epsilon,DFDT='none'):
@@ -55,9 +55,9 @@ def secante(F,a,b,epsilon):
     return(a,ite)
 
 def func(x):
-    return (x-123)**2-8
+    return arctan(x)
     
-print(dichotomie(func,120,134.30,10**(-5)))
-print(newton(func,1120,10**(-5)))
-print(secante(func,1120,1234.30,10**(-5)))
+print('dichotomie :',dichotomie(func,0.1,-0.3,10**(-5)))
+print('newton :',newton(func,0.1,10**(-5)))
+print('secante :',secante(arctan,0.1,-7,10**(-5)))
     
