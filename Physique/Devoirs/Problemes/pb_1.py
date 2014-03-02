@@ -10,7 +10,6 @@ import numpy as np
 from scipy.integrate import odeint
 import scipy.optimize as opt
 
-
 #champ de gravitation
 g=9.8
 #distance epaule/centre de gravité du tronc
