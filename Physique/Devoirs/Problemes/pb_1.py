@@ -18,7 +18,7 @@ m=5
 M=65
 
 #valeurs initiales
-theta_zero=pi/4
+theta_zero=pi/7
 dtheta_zero=0
 d2theta_zero=0
 alpha1_zero=pi/2
@@ -29,31 +29,29 @@ def OG(theta,alpha1,alpha2):
 
 def cal(x,theta):
     #merci http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html
+    #On veut que la dérivée seconde soit négative
     #ici x[0]=alpha1
     #x[1]=alpha2
-    f= [c*sin(theta)+(m*b*(cos(theta)*(sin(x[1])-sin(x[0]))-sin(theta)*(cos(x[0])+cos(x[1])))-M*h*sin(theta))/(M+2*m)+0.5,0]
-    #df= np.array([[m*b*cos(theta)*cos(x[0])-sin(theta)*(-sin(x[0]))/(M+2*m), m*b*(cos(theta)*(-cos(x[1]))-sin(theta)*(-sin(x[1])))/(M+2*m)],[0,0]])
+    f= [c*sin(theta)+(m*b*(cos(theta)*(sin(x[1])-sin(x[0]))-sin(theta)*(cos(x[0])+cos(x[1])))-M*h*sin(theta))/(M+2*m)+10**(-5),0]
     return f
 
 
 def F(liste,t,alpha1,alpha2):
     theta=liste[0]
     dthetadt=liste[1]
-    (alpha1,alpha2)=opt.root(cal,x0=(0,1),jac=False,args=(theta)).x
-    print(alpha1%(2*pi),alpha2%(2*pi))
-    return (dthetadt,-g/(OG(theta,alpha1,alpha2))*(c*sin(theta)+(m*b*(cos(theta)*(sin(alpha2)-sin(alpha1))-sin(theta)*(cos(alpha1)+cos(alpha2)))-M*h*sin(theta))/(M+2*m)))
+    (alpha1,alpha2)=opt.root(cal,x0=(0,0),jac=False,args=(theta)).x
+    return (dthetadt,-g/(OG(theta,alpha1,alpha2)**2)*(c*sin(theta)+(m*b*(cos(theta)*(sin(alpha2)-sin(alpha1))-sin(theta)*(cos(alpha1)+cos(alpha2)))-M*h*sin(theta))/(M+2*m)))
 
 
 liste_t=linspace(0,1,100)
 solution=odeint(F,[theta_zero,dtheta_zero,d2theta_zero],liste_t,(alpha1_zero,alpha2_zero))
 
-#on nettoie solution car un des algo (odeint ou root) diverge et sort nimporte quoi
+#on nettoie solution car un des algo (odeint probablement) diverge et sort nimporte quoi
 solution2=list()
 try:
     for i in solution:
         if i[0] >10**(-15) and i[0] <100:
             solution2.append(i[0])
-            print(i[0])
         else: assert()
 except: pass
 
