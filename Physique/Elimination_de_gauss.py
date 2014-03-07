@@ -26,15 +26,15 @@ def resol(M,E):
                     print(M)
                     break
                 elif i >n+1:
-                    assert()
+                    #assert()
+                    pass
                 else:
                     i+=1
                 print(M)
                 
             for i,j in range(k+1,n+1),range(k,n+1):
                 q_i=M[i,k]/M[k,k]
-                for l in range(n-k):
-                    M[k+i,k+i+l]-=q_i*M[k,k+i+l]
+                M[i,j]-=q_i*M[k,j]
                 print(M)
     except :
             print("pivot nul")
