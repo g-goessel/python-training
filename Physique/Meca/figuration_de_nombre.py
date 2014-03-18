@@ -37,10 +37,10 @@ def render():
     except:
         pass
     savefig('temp/sauvegarde.png')
-    close()  
+    close()
     tk.mainloop()
-    
-fen=tk.Tk()
+
+fen = tk.Tk()
 fen.a=tk.IntVar()
 fen.b=tk.IntVar()
 fen.r=tk.DoubleVar()
